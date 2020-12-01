@@ -11,3 +11,15 @@ export const getUsers = () => {
       })
   })
 }
+
+export const addUser = (user) => {
+  return new Promise(resolve => {
+    axios
+      .post('http://localhost:5000/api/users', user)
+      .then(res => resolve(res.data))
+      .catch(err => {
+        console.log('Error Adding New User', err.response)
+        resolve()
+      })
+  })
+}
