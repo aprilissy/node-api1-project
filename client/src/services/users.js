@@ -23,3 +23,15 @@ export const addUser = (user) => {
       })
   })
 }
+
+export const deleteUser = (id) => {
+  return new Promise(resolve => {
+    axios
+      .delete(`http://localhost:5000/api/users/${id}`)
+      .then(res => resolve(res.data))
+      .catch(err => {
+        console.log('Delete User Failed', err)
+        resolve()
+      })
+  })
+}

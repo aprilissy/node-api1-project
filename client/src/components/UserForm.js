@@ -4,10 +4,6 @@ import { addUser } from '../services/users'
 const UserForm = (params) =>{
   const nameRef = useRef()
   const bioRef = useRef()
-  // const user = {
-  //   name:nameRef.current.value,
-  //   bio:bioRef.current.value
-  // }
 
   const onSubmit = e => {
     //e.preventDefault()

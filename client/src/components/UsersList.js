@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getUsers } from '../services/users'
+import { getUsers, deleteUser } from '../services/users'
 import UserForm from '../components/UserForm'
 
 const Users = () => {
@@ -13,8 +13,15 @@ const Users = () => {
     func()
   },[])
   console.log('usersList', usersList);
-  
 
+  const clickDelete = async id => {
+    const deleting = await deleteUser(id)
+    console.log('deleting',deleting);
+    const remaining = usersList.filter(u => u.id !== id)
+    setUsersList(remaining)
+    
+  }
+  
   return(
    <div>
       <div className='displayList'>
@@ -23,7 +30,10 @@ const Users = () => {
             <div className='userCard' key={user.id}>
               <h2>{user.name}</h2>
               <p>{user.bio}</p>
-              <button  >Delete</button>
+              <button onClick={e => {
+          e.stopPropagation()
+          clickDelete(user.id)
+        }} >Delete</button>
             </div>
           )) : `No current users` )
         }
