@@ -1,12 +1,19 @@
+import React from 'react'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
+import UsersList from './components/UsersList'
 
 function App() {
 
-  
+
 
   return (
-    <div >
+    <Router >
       <h1>Hello World</h1>
-    </div>
+      <Switch>
+        <Route exact path='/' component={UsersList} ></Route>
+      </Switch>
+    </Router>
   );
 }
 
